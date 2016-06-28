@@ -21,25 +21,11 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
-for i=1:m
-    h=sigmoid(X(i,:)*theta);
-    temp=-y(i)*log(h)-(1-y(i))*log(1-h);
-    J=J+temp;
-end
-J=J/m;
-
-for j=1:size(theta)
-    g=0;
-for i=1:m
-    h=sigmoid(X(i,:)*theta);
-    temp2=(h-y(i))*X(i,j);
-    g=g+temp2;
-end
-grad(j)=g/m;
-
-end
-
-
+h=sigmoid(X*theta);
+J_sum=sum(-y.*log(h)-(1-y).*log(1-h));
+J=J_sum/m;
+grad_sum=(h-y)'*X;
+grad=grad_sum/m;
 % =============================================================
 
 end

@@ -18,11 +18,10 @@ for iter = 1:num_iters
     %
 
 
-
-
-
-
-
+h=X*theta;
+grad_sum=(h-y)'*X;
+grad=grad_sum/m*alpha;
+theta=theta-grad';
 
 
 
